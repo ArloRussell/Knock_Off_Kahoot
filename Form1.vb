@@ -1,9 +1,12 @@
-﻿Public Class Form1
-    Private timeBy As Integer
+﻿Imports Newtonsoft.Json
+
+Public Class Form1
+    Private timeBy As Integer = 20
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MakeButtons()
         tmrLeft.Interval = 1000
         tmrLeft.Start()
+        lblTime.Text = timeBy
     End Sub
 
     Private Sub MakeButtons()
@@ -29,7 +32,23 @@
             Next
         Next
     End Sub
+
+    Private Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
+        MakeButtons()
+        tmrLeft.Interval = 1000
+        tmrLeft.Start()
+    End Sub
+
     Private Sub tmrLeft_Tick(sender As Object, e As EventArgs) Handles tmrLeft.Tick
+        timeBy -= 1
+        lblTime.Text = timeBy.ToString()
+    End Sub
+
+    Private Sub LoadQuestionsFromFile()
+        'Dim reader As New IO.StreamReader(words)
+        'Dim str As String = reader.ReadToEnd
+        'words = JsonConvert.DeserializeObject(Of List(Of Questions))(str)
+        'reader.Close()
 
     End Sub
 End Class

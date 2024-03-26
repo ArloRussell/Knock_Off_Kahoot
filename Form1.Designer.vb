@@ -30,6 +30,7 @@ Partial Class Form1
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.tmrLeft = New System.Windows.Forms.Timer(Me.components)
         Me.lblScore = New System.Windows.Forms.Label()
+        Me.btnNext = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -89,11 +90,23 @@ Partial Class Form1
         Me.lblScore.Text = "Score"
         Me.lblScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'btnNext
+        '
+        Me.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.btnNext.Font = New System.Drawing.Font("Kristen ITC", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnNext.Location = New System.Drawing.Point(363, 282)
+        Me.btnNext.Name = "btnNext"
+        Me.btnNext.Size = New System.Drawing.Size(75, 23)
+        Me.btnNext.TabIndex = 5
+        Me.btnNext.Text = "Next"
+        Me.btnNext.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.btnNext)
         Me.Controls.Add(Me.lblScore)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.lblTime)
@@ -112,4 +125,5 @@ Partial Class Form1
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents tmrLeft As Timer
     Friend WithEvents lblScore As Label
+    Friend WithEvents btnNext As Button
 End Class
