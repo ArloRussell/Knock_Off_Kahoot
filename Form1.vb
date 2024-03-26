@@ -1,14 +1,24 @@
 ﻿Imports Newtonsoft.Json
 
 Public Class Form1
+    Private KahonkQuestions As New List(Of Questions)
     Private timeBy As Integer = 20
+    Private Const strQUESTIONFILE As String = "vbchapter5kahoot.json"
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        PopKahonkQuestions(strQUESTIONFILE)
         MakeButtons()
         tmrLeft.Interval = 1000
         tmrLeft.Start()
         lblTime.Text = timeBy
     End Sub
 
+    Private Sub PopKahonkQuestions(filepath)
+        If IO.File.Exists(filepath) Then
+            LoadQuestionsFromFile(filepath)
+        Else
+            MsgBox("There was an error in your file")
+        End If
+    End Sub
     Private Sub MakeButtons()
         PnlAnswers.Controls.Clear()
         Dim btnWidth As Double = PnlAnswers.Width / 2
@@ -35,6 +45,7 @@ Public Class Form1
 
     Private Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
         MakeButtons()
+        timeBy = 20
         tmrLeft.Interval = 1000
         tmrLeft.Start()
     End Sub
@@ -44,11 +55,11 @@ Public Class Form1
         lblTime.Text = timeBy.ToString()
     End Sub
 
-    Private Sub LoadQuestionsFromFile()
-        'Dim reader As New IO.StreamReader(words)
-        'Dim str As String = reader.ReadToEnd
-        'words = JsonConvert.DeserializeObject(Of List(Of Questions))(str)
-        'reader.Close()
+    Private Sub LoadQuestionsFromFile(filepath As String)
+        Dim reader As New IO.StreamReader(filepath)
+        Dim str As String = reader.ReadToEnd
+        KahonkQuestions = JsonConvert.DeserializeObject(Of List(Of Questions))(str)
+        reader.Close()
 
     End Sub
 End Class
