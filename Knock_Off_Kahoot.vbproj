@@ -140,6 +140,7 @@
     </None>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="vbchapter5kahoot.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
