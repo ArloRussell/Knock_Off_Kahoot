@@ -1,0 +1,400 @@
+[
+    {
+     "question": "In either pretest or posttest loops, the controlling condition is evaluated with each repetition.",
+     "answers": [
+      "true",
+      "false"
+     ],
+     "time": "20",
+     "correct": 0
+    },
+    {
+     "question": "In a pretest loop, the evaluation of the condition occurs after the instructions within the loop are processed.",
+     "answers": [
+      "true",
+      "false"
+     ],
+     "time": "20",
+     "correct": 1
+    },
+    {
+     "question": "In a Do...Loop statement, a condition can be phrased as either a looping condition or a loop enter condition.",
+     "answers": [
+      "true",
+      "false"
+     ],
+     "time": "20",
+     "correct": 1
+    },
+    {
+     "question": "In a Do...Loop statement, the keyword While indicates that the loop instructions should be processed while the condition is false.",
+     "answers": [
+      "true",
+      "false"
+     ],
+     "time": "20",
+     "correct": 1
+    },
+    {
+     "question": "The repetition programming structure is used to make decisions in a program.",
+     "answers": [
+      "true",
+      "false"
+     ],
+     "time": "20",
+     "correct": 1
+    },
+    {
+     "question": "Like the condition in a selection structure, the condition in a loop must evaluate to either True or False.",
+     "answers": [
+      "true",
+      "false"
+     ],
+     "time": "20",
+     "correct": 0
+    },
+    {
+     "question": "A counter is always incremented by a constant value.",
+     "answers": [
+      "true",
+      "false"
+     ],
+     "time": "20",
+     "correct": 0
+    },
+    {
+     "question": "Accumulators are usually initialized to 0, while counters are initialized to either 0 or 1.",
+     "answers": [
+      "true",
+      "false"
+     ],
+     "time": "20",
+     "correct": 0
+    },
+    {
+     "question": "The startValue in a For...Next loop structure may be omitted.",
+     "answers": [
+      "true",
+      "false"
+     ],
+     "time": "20",
+     "correct": 1
+    },
+    {
+     "question": "You can make a list box any size you want.",
+     "answers": [
+      "true",
+      "false"
+     ],
+     "time": "20",
+     "correct": 0
+    },
+    {
+     "question": "A ____ structure is also referred to as a loop.",
+     "answers": [
+      "selection",
+      "sequence",
+      "repetition",
+      "recursion"
+     ],
+     "time": "20",
+     "correct": 2
+    },
+    {
+     "question": "Programmers use a(n) ____ when they need the computer to repeatedly process one or more program instructions until some condition is met, at which time the ____ ends.",
+     "answers": [
+      "list box",
+      "loop",
+      "index",
+      "counter"
+     ],
+     "time": "20",
+     "correct": 1
+    },
+    {
+     "question": "Which of the following loop structures always executes at least once?",
+     "answers": [
+      "pretest",
+      "posttest",
+      "top-driven",
+      "selection"
+     ],
+     "time": "20",
+     "correct": 1
+    },
+    {
+     "question": "The loop created by the For...Next statement is a ____ loop.",
+     "answers": [
+      "posttest",
+      "pretest",
+      "selection",
+      "sequential"
+     ],
+     "time": "20",
+     "correct": 1
+    },
+    {
+     "question": "You use the ____ operator to concatenate strings.",
+     "answers": [
+      "@",
+      "%",
+      "&",
+      "#"
+     ],
+     "time": "20",
+     "correct": 2
+    },
+    {
+     "question": "The symbol used to represent a loop condition on a flowchart is the ____ symbol.",
+     "answers": [
+      "diamond",
+      "rectangle",
+      "hexagon",
+      "parallelogram"
+     ],
+     "time": "20",
+     "correct": 0
+    },
+    {
+     "question": "A(n) ____ is a numeric variable used for adding together something.",
+     "answers": [
+      "counter",
+      "updater",
+      "incrementer",
+      "accumulator"
+     ],
+     "time": "20",
+     "correct": 3
+    },
+    {
+     "question": " ____ means assigning a beginning value to a counter or an accumulator.",
+     "answers": [
+      "Introducing",
+      "Initializing",
+      "Incrementing",
+      "Updating"
+     ],
+     "time": "20",
+     "correct": 1
+    },
+    {
+     "question": "Which of the following statements adds the number stored in the decPrice variable to the number stored in the decSubtotal variable, and then assigns the result to the decSubtotal variable?",
+     "answers": [
+      "decSubtotal =+ decPrice",
+      "decPrice =+ decSubtotal",
+      "decSubtotal += decPrice",
+      "decPrice += decSubtotal"
+     ],
+     "time": "20",
+     "correct": 2
+    },
+    {
+     "question": "If the stepValue is omitted when coding a For...Next statement, the stepValue is ____ at execution time.",
+     "answers": [
+      "−1",
+      "0",
+      "0.1",
+      "1"
+     ],
+     "time": "20",
+     "correct": 3
+    },
+    {
+     "question": "In a For...Next statement, if stepValue is positive, the loop body is processed when the counter’s value is ____ endValue.",
+     "answers": [
+      "less than",
+      "more than",
+      "less than or equal to",
+      "more than or equal to"
+     ],
+     "time": "20",
+     "correct": 2
+    },
+    {
+     "question": "Adding increments of a negative number is referred to as ____.",
+     "answers": [
+      "decrementing",
+      "initializing",
+      "deprocessing",
+      "negating"
+     ],
+     "time": "20",
+     "correct": 0
+    },
+    {
+     "question": "You can use a ____ to display a list of choices from which the user can select zero choices, one choice, or more than one choice.",
+     "answers": [
+      "list box",
+      "radio button group",
+      "check box",
+      "list"
+     ],
+     "time": "20",
+     "correct": 0
+    },
+    {
+     "question": "You use the ____ tool in the toolbox to add a list box to an interface.",
+     "answers": [
+      "LBox",
+      "ListBox",
+      "List",
+      "Box"
+     ],
+     "time": "20",
+     "correct": 1
+    },
+    {
+     "question": "The number of choices the user can select from a list box is controlled by the list box’s ____ property.",
+     "answers": [
+      "Selection",
+      "Display",
+      "Control",
+      "SelectionMode"
+     ],
+     "time": "20",
+     "correct": 3
+    },
+    {
+     "question": "You should use a ____ control to provide keyboard access to a list box.",
+     "answers": [
+      "radio button",
+      "text",
+      "check box",
+      "label"
+     ],
+     "time": "20",
+     "correct": 3
+    },
+    {
+     "question": "According to the Windows standard, a list box should contain a minimum of ____ item(s).",
+     "answers": [
+      "two",
+      "three",
+      "four",
+      "five"
+     ],
+     "time": "20",
+     "correct": 1
+    },
+    {
+     "question": "A unique number called a(n) ____ identifies each item in a collection.",
+     "answers": [
+      "counter",
+      "index",
+      "accumulator",
+      "tracker"
+     ],
+     "time": "20",
+     "correct": 1
+    },
+    {
+     "question": "You can use either the SelectedItem or ____ property to determine whether an item is selected in a list box.",
+     "answers": [
+      "Selection",
+      "SelectedIndex",
+      "ItemChoice",
+      "Items"
+     ],
+     "time": "20",
+     "correct": 1
+    },
+    {
+     "question": "Which of the following statements selects the “blue” item, which appears fourth in the lstColor control?",
+     "answers": [
+      "lstColor.SelectedIndex = 3",
+      "lstColor.SelectedIndex = 4",
+      "lstColor.SelectedItem = 3",
+      "lstColor.SelectedItem = 4"
+     ],
+     "time": "20",
+     "correct": 0
+    },
+    {
+     "question": "Each time either the user or a statement selects an item in a list box, the list box’s SelectedValueChanged and ____ events occur.",
+     "answers": [
+      "SelectedItemChanged",
+      "SelectionChanged",
+      "SelectedIndexChanged",
+      "ItemChanged"
+     ],
+     "time": "20",
+     "correct": 2
+    },
+    {
+     "question": "Visual Basic’s ____ class contains many methods that your applications can use to perform financial calculations.",
+     "answers": [
+      "Money",
+      "Monetary",
+      "Finance",
+      "Financial"
+     ],
+     "time": "20",
+     "correct": 3
+    },
+    {
+     "question": "You can stop an endless loop by clicking Debug on the menu bar, and then clicking ____.",
+     "answers": [
+      "Stop Debugging",
+      "Cancel Debugging",
+      "Abort Debugging",
+      "End Debugging"
+     ],
+     "time": "20",
+     "correct": 0
+    },
+    {
+     "question": "The strFirstName and strLastName variables contain the strings “Jane” and “Jones,” respectively. Which of the following statements will display a string as “Jones, Jane” (the last name, a comma, a space, and the first name) in the lblFullName control?",
+     "answers": [
+      "lblFullName = strLastName, & strFirstName",
+      "lblFullName = strLastName & \", \" strFirstName",
+      "lblFullName = strLastName  & \", \" & strFirstName",
+      "none of the above"
+     ],
+     "time": "20",
+     "correct": 2
+    },
+    {
+     "question": "In a nested repetition structure, one loop, referred to as the ____ loop, is placed entirely within another loop, called the ____ loop.",
+     "answers": [
+      "inner, outer",
+      "primary, secondary",
+      "minor, major",
+      "dependent, independent"
+     ],
+     "time": "20",
+     "correct": 0
+    },
+    {
+     "question": "The ControlChars.NewLine constant instructs the computer to ____.",
+     "answers": [
+      "advance the insertion point to the next line in a control",
+      "exit the routine and restart",
+      "restart from the beginning of the subroutine",
+      "strip the remainder of the routine"
+     ],
+     "time": "20",
+     "correct": 0
+    },
+    {
+     "question": "A default button is identified by setting the form’s ____ property.",
+     "answers": [
+      "AcceptButton",
+      "DefaultButton",
+      "SelectedButton",
+      "CancelButton"
+     ],
+     "time": "20",
+     "correct": 0
+    },
+    {
+     "question": "A(n) ____ error occurs when the value assigned to a memory allocation is too large for the location’s data type.",
+     "answers": [
+      "overfull",
+      "overspill",
+      "overfill",
+      "overflow"
+     ],
+     "time": "20",
+     "correct": 3
+    }
+]
