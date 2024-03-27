@@ -1,15 +1,20 @@
-﻿Imports Newtonsoft.Json
+﻿Imports System.Web.Helpers
+Imports Newtonsoft.Json
 
 Public Class Form1
     Private KahonkQuestions As New List(Of Questions)
     Private timeBy As Integer = 20
-    Private Const strQUESTIONFILE As String = "vbchapter5kahoot.json"
+    Private Const strQUESTIONFILE As String = "C:\Users\CMP_AnSpencer\source\repos\ArloRussell\Knock_Off_Kahoot\bin\Debug\vbchapter5kahoot.json"
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         PopKahonkQuestions(strQUESTIONFILE)
         MakeButtons()
         tmrLeft.Interval = 1000
         tmrLeft.Start()
         lblTime.Text = timeBy
+        For i As Integer = 0 To KahonkQuestions.Count - 1
+            MsgBox(KahonkQuestions(i))
+        Next
     End Sub
 
     Private Sub PopKahonkQuestions(filepath)
@@ -44,6 +49,7 @@ Public Class Form1
     End Sub
 
     Private Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
+        lblTime.Text = "20"
         MakeButtons()
         timeBy = 20
         tmrLeft.Interval = 1000
@@ -56,42 +62,26 @@ Public Class Form1
     End Sub
 
     Private Sub LoadQuestionsFromFile(filepath As String)
-        Dim reader As New IO.StreamReader(filepath)
+        Dim reader As New IO.StreamReader(strQUESTIONFILE)
         Dim str As String = reader.ReadToEnd
-        KahonkQuestions = JsonConvert.DeserializeObject(Of List(Of Questions))(str)
+        Dim result As Questions = JsonConvert.DeserializeObject(Of Questions)(str)
+        MsgBox(filepath)
         reader.Close()
-
     End Sub
 End Class
 Class Questions
-    Private _question As String
-    Private _answers As List(Of String)
-    Private _time As Integer
 
-    Public Property Question As String
-        Get
-            Return _question
-        End Get
-        Set(value As String)
-            _question = value
-        End Set
-    End Property
+    Public Class Rootobject
+        Public Property Property1() As Class1
+    End Class
 
-    Public Property Answers As List(Of String)
-        Get
-            Return _answers
-        End Get
-        Set(value As List(Of String))
-            _answers = value
-        End Set
-    End Property
+    Public Class Class1
+        Public Property question As String
+        Public Property answers() As String
+        Public Property time As String
+        Public Property correct As Integer
 
-    Public Property Time As Integer
-        Get
-            Return _time
-        End Get
-        Set(value As Integer)
-            _time += value
-        End Set
-    End Property
+    End Class
+
 End Class
+
