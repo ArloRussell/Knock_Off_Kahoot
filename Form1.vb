@@ -44,10 +44,17 @@ Public Class Form1
                     .FlatStyle = FlatStyle.Flat
                 }
                 PnlAnswers.Controls.Add(btn)
+
+                AddHandler btn.Click, AddressOf Me.btn_Click
             Next
         Next
     End Sub
 
+    Private Sub btn_Click(sender As Button, e As EventArgs)
+        tmrLeft.Stop()
+        MsgBox("Yep. That's a button.")
+
+    End Sub
     Private Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
         lblTime.Text = "20"
         MakeButtons()
