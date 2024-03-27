@@ -4,7 +4,7 @@ Imports Newtonsoft.Json
 Public Class Form1
     Private KahonkQuestions As New List(Of Questions)
     Private timeBy As Integer = 20
-    Private Const strQUESTIONFILE As String = "C:\Users\CMP_AnSpencer\source\repos\ArloRussell\Knock_Off_Kahoot\bin\Debug\vbchapter5kahoot.json"
+    Private Const strQUESTIONFILE As String = "vbchapter5kahoot.json"
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         PopKahonkQuestions(strQUESTIONFILE)
@@ -44,10 +44,17 @@ Public Class Form1
                     .FlatStyle = FlatStyle.Flat
                 }
                 PnlAnswers.Controls.Add(btn)
+
+                AddHandler btn.Click, AddressOf Me.btn_Click
             Next
         Next
     End Sub
 
+    Private Sub btn_Click(sender As Button, e As EventArgs)
+        tmrLeft.Stop()
+        MsgBox("Yep. That's a button.")
+
+    End Sub
     Private Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
         lblTime.Text = "20"
         MakeButtons()
