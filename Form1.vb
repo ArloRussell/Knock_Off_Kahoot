@@ -2,9 +2,9 @@
 Imports Newtonsoft.Json
 
 Public Class Form1
-    Private KahonkQuestions As New List(Of Questions)
+    Private KahonkQuestions As New List(Of Question)
     Private timeBy As Integer = 20
-    Private Const strQUESTIONFILE As String = "C:\Users\CMP_AnSpencer\source\repos\ArloRussell\Knock_Off_Kahoot\bin\Debug\vbchapter5kahoot.json"
+    Private Const strQUESTIONFILE As String = "vbchapter5kahoot.json"
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         PopKahonkQuestions(strQUESTIONFILE)
@@ -62,26 +62,27 @@ Public Class Form1
     End Sub
 
     Private Sub LoadQuestionsFromFile(filepath As String)
-        Dim reader As New IO.StreamReader(strQUESTIONFILE)
+        Dim reader As New IO.StreamReader(filepath)
         Dim str As String = reader.ReadToEnd
-        Dim result As Questions = JsonConvert.DeserializeObject(Of Questions)(str)
-        MsgBox(filepath)
-        reader.Close()
+        Try
+            KahonkQuestions = JsonConvert.DeserializeObject(Of List(Of Question))(str)
+        Catch ex As Exception
+            Process.Start($"https://www.google.com/search?q={ex.Message}")
+        Finally
+            reader.Close()
+        End Try
+
+
     End Sub
 End Class
-Class Questions
 
-    Public Class Rootobject
-        Public Property Property1() As Class1
-    End Class
 
-    Public Class Class1
-        Public Property question As String
-        Public Property answers() As String
-        Public Property time As String
-        Public Property correct As Integer
 
-    End Class
-
+Public Class Question
+    Public Property question As String
+    Public Property answers As List(Of String)
+    Public Property time As Integer
+    Public Property correct As Integer
 End Class
+
 
