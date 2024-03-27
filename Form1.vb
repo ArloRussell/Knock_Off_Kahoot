@@ -9,16 +9,16 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         PopKahonkQuestions(strQUESTIONFILE)
         MakeButtons()
-        tmrLeft.Interval = 1000
+        tmrLeft.Interval = 1000Dd
         tmrLeft.Start()
         lblTime.Text = timeBy
-        For i As Integer = 0 To KahonkQuestions.Count - 1
-            MsgBox(KahonkQuestions(i).answers(KahonkQuestions(i).correct).ToString())
-            'For j As Integer = 0 To KahonkQuestions(i).answers.Count - 1
-            'MsgBox(KahonkQuestions(i).answers(j).ToString())
-            '
-            ' Next
-        Next
+        'For i As Integer = 0 To KahonkQuestions.Count - 1
+        '    MsgBox(KahonkQuestions(i).answers(KahonkQuestions(i).correct).ToString())
+        '    'For j As Integer = 0 To KahonkQuestions(i).answers.Count - 1
+        '    'MsgBox(KahonkQuestions(i).answers(j).ToString())
+        '    '
+        '    ' Next
+        'Next
     End Sub
 
     Private Sub PopKahonkQuestions(filepath)
@@ -83,6 +83,10 @@ Public Class Form1
             reader.Close()
         End Try
 
+
+    End Sub
+
+    Private Sub PnlAnswers_Paint(sender As Object, e As PaintEventArgs) Handles PnlAnswers.Paint
 
     End Sub
 End Class
