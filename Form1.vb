@@ -13,7 +13,11 @@ Public Class Form1
         tmrLeft.Start()
         lblTime.Text = timeBy
         For i As Integer = 0 To KahonkQuestions.Count - 1
-            MsgBox(KahonkQuestions(i))
+            MsgBox(KahonkQuestions(i).answers(KahonkQuestions(i).correct).ToString())
+            'For j As Integer = 0 To KahonkQuestions(i).answers.Count - 1
+            'MsgBox(KahonkQuestions(i).answers(j).ToString())
+            '
+            ' Next
         Next
     End Sub
 
