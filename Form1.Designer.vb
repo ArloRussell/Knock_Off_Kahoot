@@ -43,7 +43,7 @@ Partial Class Form1
         '
         Me.PnlAnswers.Location = New System.Drawing.Point(12, 349)
         Me.PnlAnswers.Name = "PnlAnswers"
-        Me.PnlAnswers.Size = New System.Drawing.Size(776, 129)
+        Me.PnlAnswers.Size = New System.Drawing.Size(776, 184)
         Me.PnlAnswers.TabIndex = 0
         '
         'LblQuest
@@ -138,7 +138,7 @@ Partial Class Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 493)
+        Me.ClientSize = New System.Drawing.Size(800, 545)
         Me.Controls.Add(Me.btnNext)
         Me.Controls.Add(Me.lblScore)
         Me.Controls.Add(Me.PictureBox1)
