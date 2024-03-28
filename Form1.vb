@@ -22,11 +22,12 @@ Public Class Form1
     Private Sub MakeButtons()
         PnlAnswers.Controls.Clear()
         Dim btnWidth As Double = PnlAnswers.Width / 2
-
+        Dim btnHeight As Double
         For i As Integer = 0 To 1
             For j As Integer = 0 To KahonkQuestions(i).answers.Count - 1
-                Dim btnHeight As Double = PnlAnswers.Height / (KahonkQuestions(i).answers.Count - 1)
-                Dim btn As New Button With {
+                If KahonkQuestions(i).answers.Count < 3 Then
+                    btnHeight = PnlAnswers.Height / (KahonkQuestions(i).answers.Count - 1)
+                    Dim btn As New Button With {
                     .Location = New Point(btnWidth * i, btnHeight * j),
                     .Width = btnWidth,
                     .Height = btnHeight,
@@ -36,8 +37,23 @@ Public Class Form1
                     .Font = New Font("Kristen ITC", 16),
                     .FlatStyle = FlatStyle.Flat
                 }
-                AddHandler btn.Click, AddressOf Me.btn_Click
-                PnlAnswers.Controls.Add(btn)
+                    AddHandler btn.Click, AddressOf Me.btn_Click
+                    PnlAnswers.Controls.Add(btn)
+                Else
+                    btnHeight = PnlAnswers.Height / ((KahonkQuestions(i).answers.Count - 1) / 2)
+                    Dim btn As New Button With {
+                    .Location = New Point(btnWidth * i, btnHeight * j),
+                    .Width = btnWidth,
+                    .Height = btnHeight,
+                    .BackColor = Color.DarkBlue,
+                    .ForeColor = Color.White,
+                    .Text = KahonkQuestions(i).answers(j),
+                    .Font = New Font("Kristen ITC", 16),
+                    .FlatStyle = FlatStyle.Flat
+                }
+                    AddHandler btn.Click, AddressOf Me.btn_Click
+                    PnlAnswers.Controls.Add(btn)
+                End If
 
             Next
         Next
