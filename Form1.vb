@@ -24,39 +24,43 @@ Public Class Form1
         PnlAnswers.Controls.Clear()
         Dim btnWidth As Double = PnlAnswers.Width / 2
         Dim btnHeight As Double
-        Dim currentQ As Integer = 0
+        Dim loope As Integer = 0
         For i As Integer = 0 To 1
-            For j As Integer = 0 To KahonkQuestions(currentQ).answers.Count - 1
-                If KahonkQuestions(i).answers.Count < 3 Then
-                    btnHeight = PnlAnswers.Height / (KahonkQuestions(currentQ).answers.Count - 1)
+            For j As Integer = 0 To KahonkQuestions(0).answers.Count - 3
+                If KahonkQuestions(0).answers.Count < 3 Then
+                    btnHeight = PnlAnswers.Height / (KahonkQuestions(0).answers.Count - 1)
                     Dim btn As New Button With {
                     .Location = New Point(btnWidth * i, btnHeight * j),
                     .Width = btnWidth,
                     .Height = btnHeight,
                     .BackColor = Color.DarkBlue,
                     .ForeColor = Color.White,
-                    .Text = KahonkQuestions(currentQ).answers(j),
+                    .Text = KahonkQuestions(0).answers(i),
                     .Font = New Font("Kristen ITC", 16),
-                    .FlatStyle = FlatStyle.Flat
+                    .FlatStyle = FlatStyle.Flat,
+                    .Name = $"btn{j}"
                 }
                     AddHandler btn.Click, AddressOf Me.btn_Click
                     PnlAnswers.Controls.Add(btn)
                 Else
-                    btnHeight = PnlAnswers.Height / (KahonkQuestions(i).answers.Count / 2)
+                    btnHeight = PnlAnswers.Height / (KahonkQuestions(0).answers.Count / 2)
                     Dim btn As New Button With {
                     .Location = New Point(btnWidth * i, btnHeight * j),
                     .Width = btnWidth,
                     .Height = btnHeight,
                     .BackColor = Color.DarkBlue,
                     .ForeColor = Color.White,
-                    .Text = KahonkQuestions(currentQ).answers(j),
+                    .Text = KahonkQuestions(0).answers(j),
                     .Font = New Font("Kristen ITC", 16),
-                    .FlatStyle = FlatStyle.Flat
+                    .FlatStyle = FlatStyle.Flat,
+                    .Name = $"btn{j}"
                 }
                     AddHandler btn.Click, AddressOf Me.btn_Click
                     PnlAnswers.Controls.Add(btn)
                 End If
+
             Next
+            loope += 1
         Next
         LblQuest.Text = KahonkQuestions(0).question
     End Sub
@@ -77,10 +81,14 @@ Public Class Form1
         End If
 
         'WORKS LIKE A COAL MINER
-        If sender.Text = "true" Then
+        If sender.Name = "btn0" Then
             userChoice = 0
-        ElseIf sender.Text = "false" Then
+        ElseIf sender.name = "btn1" Then
             userChoice = 1
+        ElseIf sender.Name = "btn2" Then
+            userChoice = 2
+        ElseIf sender.Name = "btn3" Then
+            userChoice = 3
         End If
 
         'Problem is here >>
