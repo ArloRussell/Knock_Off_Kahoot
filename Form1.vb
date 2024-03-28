@@ -1,10 +1,12 @@
-﻿Imports System.Web.Helpers
+﻿Imports System.ComponentModel.Design
+Imports System.Web.Helpers
 Imports Newtonsoft.Json
 
 Public Class Form1
     Private KahonkQuestions As New List(Of Question)
     Private timeBy As Integer = 20
     Private Const strQUESTIONFILE As String = "vbchapter5kahoot.json"
+    Private correctQuestion As Integer
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MsgBox("You Have 20 second to find your file.")
@@ -39,15 +41,41 @@ Public Class Form1
 
             Next
         Next
+        LblQuest.Text = KahonkQuestions(0).question
     End Sub
 
     Private Sub btn_Click(sender As Button, e As EventArgs)
-        tmrLeft.Stop()
-        If sender.Text = KahonkQuestions(0).correct Then
-            MsgBox("Correct")
+        Dim userChoice As Integer
+        Static score As Integer
+
+        'WORKS LIKE A CHARM
+        If sender.Text = "true" OrElse sender.Text = "false" Then
+            If KahonkQuestions(0).correct = 0 Then
+                correctQuestion = 1
+            Else
+                correctQuestion = 0
+            End If
         Else
-            MsgBox("Yep. That's a button.")
+            correctQuestion = KahonkQuestions(0).correct
         End If
+
+        'WORKS LIKE A COAL MINER
+        If sender.Text = "true" Then
+            userChoice = 0
+        ElseIf sender.Text = "false" Then
+            userChoice = 1
+        End If
+
+        'Problem is here >>
+        If userChoice = correctQuestion Then
+            MsgBox(userChoice)
+            score += 1
+            lblScore.Text = score
+        Else
+            MsgBox("bad choice buckaroo!")
+        End If
+        KahonkQuestions.RemoveAt(0)
+        tmrLeft.Stop()
     End Sub
     Private Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
         lblTime.Text = "20"
