@@ -7,8 +7,7 @@ Public Class Form1
     Private timeBy As Integer = 20
     Private Const strQUESTIONFILE As String = "vbchapter5kahoot.json"
     Private correctQuestion As Integer
-    Dim rand As New Random
-    Dim random As Integer = rand.Next(0, KahonkQuestions.Count)
+
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MsgBox("You Have 20 second to find your file.")
@@ -22,21 +21,21 @@ Public Class Form1
     End Sub
 
     Private Sub MakeButtons()
-        random = rand.Next(0, KahonkQuestions.Count)
         PnlAnswers.Controls.Clear()
         Dim btnWidth As Double = PnlAnswers.Width / 2
         Dim btnHeight As Double
+        Dim currentQ As Integer = 0
         For i As Integer = 0 To 1
-            For j As Integer = 0 To KahonkQuestions(i).answers.Count - 1
+            For j As Integer = 0 To KahonkQuestions(currentQ).answers.Count - 1
                 If KahonkQuestions(i).answers.Count < 3 Then
-                    btnHeight = PnlAnswers.Height / (KahonkQuestions(i).answers.Count - 1)
+                    btnHeight = PnlAnswers.Height / (KahonkQuestions(currentQ).answers.Count - 1)
                     Dim btn As New Button With {
                     .Location = New Point(btnWidth * i, btnHeight * j),
                     .Width = btnWidth,
                     .Height = btnHeight,
                     .BackColor = Color.DarkBlue,
                     .ForeColor = Color.White,
-                    .Text = KahonkQuestions(i).answers(i),
+                    .Text = KahonkQuestions(currentQ).answers(j),
                     .Font = New Font("Kristen ITC", 16),
                     .FlatStyle = FlatStyle.Flat
                 }
@@ -50,14 +49,13 @@ Public Class Form1
                     .Height = btnHeight,
                     .BackColor = Color.DarkBlue,
                     .ForeColor = Color.White,
-                    .Text = KahonkQuestions(i).answers(j),
+                    .Text = KahonkQuestions(currentQ).answers(j),
                     .Font = New Font("Kristen ITC", 16),
                     .FlatStyle = FlatStyle.Flat
                 }
                     AddHandler btn.Click, AddressOf Me.btn_Click
                     PnlAnswers.Controls.Add(btn)
                 End If
-
             Next
         Next
         LblQuest.Text = KahonkQuestions(0).question
