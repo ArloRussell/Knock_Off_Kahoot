@@ -30,7 +30,6 @@ Partial Class Form1
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.tmrLeft = New System.Windows.Forms.Timer(Me.components)
         Me.lblScore = New System.Windows.Forms.Label()
-        Me.btnNext = New System.Windows.Forms.Button()
         Me.MenuStrip2 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -95,17 +94,6 @@ Partial Class Form1
         Me.lblScore.Text = "Score"
         Me.lblScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'btnNext
-        '
-        Me.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.btnNext.Font = New System.Drawing.Font("Kristen ITC", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnNext.Location = New System.Drawing.Point(363, 322)
-        Me.btnNext.Name = "btnNext"
-        Me.btnNext.Size = New System.Drawing.Size(75, 23)
-        Me.btnNext.TabIndex = 5
-        Me.btnNext.Text = "Next"
-        Me.btnNext.UseVisualStyleBackColor = True
-        '
         'MenuStrip2
         '
         Me.MenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem})
@@ -139,7 +127,6 @@ Partial Class Form1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 545)
-        Me.Controls.Add(Me.btnNext)
         Me.Controls.Add(Me.lblScore)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.lblTime)
@@ -162,7 +149,6 @@ Partial Class Form1
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents tmrLeft As Timer
     Friend WithEvents lblScore As Label
-    Friend WithEvents btnNext As Button
     Friend WithEvents MenuStrip2 As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OpenToolStripMenuItem As ToolStripMenuItem
