@@ -51,9 +51,9 @@ Public Class Form1
         'WORKS LIKE A CHARM
         If sender.Text = "true" OrElse sender.Text = "false" Then
             If KahonkQuestions(0).correct = 0 Then
-                correctQuestion = 1
-            Else
                 correctQuestion = 0
+            Else
+                correctQuestion = 1
             End If
         Else
             correctQuestion = KahonkQuestions(0).correct
@@ -75,6 +75,7 @@ Public Class Form1
             MsgBox("bad choice buckaroo!")
         End If
         KahonkQuestions.RemoveAt(0)
+        MakeButtons()
         tmrLeft.Stop()
     End Sub
     Private Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
