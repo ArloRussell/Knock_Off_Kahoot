@@ -25,15 +25,34 @@ Public Class Form1
         Dim btnWidth As Double = PnlAnswers.Width / 2
         Dim btnHeight As Double
         Dim currentQ As Integer = 0
+        Dim color As Color
+        Dim question As String = "Placeholder"
         For i As Integer = 0 To 1
             For j As Integer = 0 To KahonkQuestions(currentQ).answers.Count - 1
                 If KahonkQuestions(i).answers.Count < 3 Then
+                    Select Case i
+                        Case = 0
+                            Select Case j
+                                Case = 0
+                                    color = Color.Red
+                                Case = 1
+                                    color = Color.DarkBlue
+                            End Select
+                        Case = 1
+                            Select Case j
+                                Case = 0
+                                    color = Color.DarkGray
+                                Case = 1
+                                    color = Color.DarkGreen
+                            End Select
+
+                    End Select
                     btnHeight = PnlAnswers.Height / (KahonkQuestions(currentQ).answers.Count - 1)
                     Dim btn As New Button With {
                     .Location = New Point(btnWidth * i, btnHeight * j),
                     .Width = btnWidth,
                     .Height = btnHeight,
-                    .BackColor = Color.DarkBlue,
+                    .BackColor = color,
                     .ForeColor = Color.White,
                     .Text = KahonkQuestions(currentQ).answers(i),
                     .Font = New Font("Kristen ITC", 16),
@@ -42,14 +61,36 @@ Public Class Form1
                     AddHandler btn.Click, AddressOf Me.btn_Click
                     PnlAnswers.Controls.Add(btn)
                 Else
+                    Select Case i
+                        Case = 0
+                            Select Case j
+                                Case = 0
+                                    color = Color.Red
+                                    question = KahonkQuestions(i).answers(0)
+                                Case = 1
+                                    color = Color.DarkBlue
+                                    question = KahonkQuestions(i).answers(1)
+                            End Select
+                        Case = 1
+                            Select Case j
+                                Case = 0
+                                    color = Color.DarkGray
+                                    question = KahonkQuestions(i - 1).answers(2)
+                                Case = 1
+                                    color = Color.DarkGreen
+                                    question = KahonkQuestions(i - 1).answers(3)
+                            End Select
+
+                    End Select
+
                     btnHeight = PnlAnswers.Height / (KahonkQuestions(i).answers.Count / 2)
                     Dim btn As New Button With {
                     .Location = New Point(btnWidth * i, btnHeight * j),
                     .Width = btnWidth,
                     .Height = btnHeight,
-                    .BackColor = Color.DarkBlue,
+                    .BackColor = color,
                     .ForeColor = Color.White,
-                    .Text = KahonkQuestions(currentQ).answers(j),
+                    .Text = question,
                     .Font = New Font("Kristen ITC", 16),
                     .FlatStyle = FlatStyle.Flat
                 }
@@ -57,6 +98,8 @@ Public Class Form1
                     PnlAnswers.Controls.Add(btn)
                 End If
             Next
+            timeBy = KahonkQuestions(i).time
+            tmrLeft.Start()
         Next
         LblQuest.Text = KahonkQuestions(0).question
     End Sub
@@ -64,7 +107,7 @@ Public Class Form1
     Private Sub btn_Click(sender As Button, e As EventArgs)
         Dim userChoice As Integer
         Static score As Integer
-
+        tmrLeft.Stop()
         'WORKS LIKE A CHARM
         If sender.Text = "true" OrElse sender.Text = "false" Then
             If KahonkQuestions(0).correct = 0 Then
@@ -94,14 +137,7 @@ Public Class Form1
         MsgBox(userChoice & "  " & correctQuestion)
         KahonkQuestions.RemoveAt(0)
         MakeButtons()
-        tmrLeft.Stop()
-    End Sub
-    Private Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
-        lblTime.Text = "20"
-        MakeButtons()
-        timeBy = 20
-        tmrLeft.Interval = 1000
-        tmrLeft.Start()
+
     End Sub
 
     Private Sub tmrLeft_Tick(sender As Object, e As EventArgs) Handles tmrLeft.Tick
