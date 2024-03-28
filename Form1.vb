@@ -35,7 +35,7 @@ Public Class Form1
                     .Height = btnHeight,
                     .BackColor = Color.DarkBlue,
                     .ForeColor = Color.White,
-                    .Text = KahonkQuestions(currentQ).answers(j),
+                    .Text = KahonkQuestions(currentQ).answers(i),
                     .Font = New Font("Kristen ITC", 16),
                     .FlatStyle = FlatStyle.Flat
                 }
