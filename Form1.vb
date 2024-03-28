@@ -7,6 +7,8 @@ Public Class Form1
     Private timeBy As Integer = 20
     Private Const strQUESTIONFILE As String = "vbchapter5kahoot.json"
     Private correctQuestion As Integer
+    Dim rand As New Random
+    Dim random As Integer = rand.Next(0, KahonkQuestions.Count)
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MsgBox("You Have 20 second to find your file.")
@@ -20,6 +22,7 @@ Public Class Form1
     End Sub
 
     Private Sub MakeButtons()
+        random = rand.Next(0, KahonkQuestions.Count)
         PnlAnswers.Controls.Clear()
         Dim btnWidth As Double = PnlAnswers.Width / 2
 
@@ -32,7 +35,7 @@ Public Class Form1
                     .Height = btnHeight,
                     .BackColor = Color.DarkBlue,
                     .ForeColor = Color.White,
-                    .Text = KahonkQuestions(i).answers(i),
+                    .Text = KahonkQuestions(random).answers(i),
                     .Font = New Font("Kristen ITC", 16),
                     .FlatStyle = FlatStyle.Flat
                 }
@@ -68,13 +71,14 @@ Public Class Form1
 
         'Problem is here >>
         If userChoice = correctQuestion Then
-            MsgBox(userChoice)
+
             score += 1
             lblScore.Text = score
         Else
             MsgBox("bad choice buckaroo!")
         End If
-        KahonkQuestions.RemoveAt(0)
+        MsgBox(userChoice & "  " & correctQuestion)
+        KahonkQuestions.RemoveAt(random)
         MakeButtons()
         tmrLeft.Stop()
     End Sub

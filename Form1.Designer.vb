@@ -49,11 +49,11 @@ Partial Class Form1
         'LblQuest
         '
         Me.LblQuest.BackColor = System.Drawing.Color.DarkBlue
-        Me.LblQuest.Font = New System.Drawing.Font("Kristen ITC", 20.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblQuest.Font = New System.Drawing.Font("Kristen ITC", 18.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblQuest.ForeColor = System.Drawing.Color.White
-        Me.LblQuest.Location = New System.Drawing.Point(-1, 36)
+        Me.LblQuest.Location = New System.Drawing.Point(-1, 24)
         Me.LblQuest.Name = "LblQuest"
-        Me.LblQuest.Size = New System.Drawing.Size(808, 99)
+        Me.LblQuest.Size = New System.Drawing.Size(808, 127)
         Me.LblQuest.TabIndex = 1
         Me.LblQuest.Text = "Insert Question Here"
         Me.LblQuest.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -126,7 +126,7 @@ Partial Class Form1
         '
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
         Me.OpenToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
         Me.OpenToolStripMenuItem.Text = "Open"
         '
         'OpenQuestionJSON
@@ -152,6 +152,7 @@ Partial Class Form1
         Me.MenuStrip2.ResumeLayout(False)
         Me.MenuStrip2.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
