@@ -36,7 +36,7 @@ Public Class Form1
                     .Height = btnHeight,
                     .BackColor = Color.DarkBlue,
                     .ForeColor = Color.White,
-                    .Text = KahonkQuestions(random).answers(i),
+                    .Text = KahonkQuestions(i).answers(i),
                     .Font = New Font("Kristen ITC", 16),
                     .FlatStyle = FlatStyle.Flat
                 }
@@ -94,7 +94,7 @@ Public Class Form1
             MsgBox("bad choice buckaroo!")
         End If
         MsgBox(userChoice & "  " & correctQuestion)
-        KahonkQuestions.RemoveAt(random)
+        KahonkQuestions.RemoveAt(0)
         MakeButtons()
         tmrLeft.Stop()
     End Sub
