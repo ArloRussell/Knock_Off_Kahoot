@@ -40,7 +40,7 @@ Public Class Form1
                     AddHandler btn.Click, AddressOf Me.btn_Click
                     PnlAnswers.Controls.Add(btn)
                 Else
-                    btnHeight = PnlAnswers.Height / ((KahonkQuestions(i).answers.Count - 1) / 2)
+                    btnHeight = PnlAnswers.Height / (KahonkQuestions(i).answers.Count / 2)
                     Dim btn As New Button With {
                     .Location = New Point(btnWidth * i, btnHeight * j),
                     .Width = btnWidth,
