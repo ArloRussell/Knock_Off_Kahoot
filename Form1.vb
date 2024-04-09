@@ -41,16 +41,16 @@ Public Class Form1
                     Case 0
                         Select Case j
                             Case 0
-                                color = color.Red
+                                color = Color.Red
                             Case 1
-                                color = color.DarkBlue
+                                color = Color.DarkBlue
                         End Select
                     Case 1
                         Select Case j
                             Case 0
-                                color = color.DarkGray
+                                color = Color.DarkGray
                             Case 1
-                                color = color.DarkGreen
+                                color = Color.DarkGreen
                         End Select
 
                 End Select
@@ -60,7 +60,7 @@ Public Class Form1
                     .Width = btnWidth,
                     .Height = btnHeight,
                     .BackColor = color,
-                    .ForeColor = color.White,
+                    .ForeColor = Color.White,
                     .Text = KahonkQuestions(currentQ).answers(j),
                     .Font = New Font("Kristen ITC", 16),
                     .FlatStyle = FlatStyle.Flat
@@ -72,19 +72,19 @@ Public Class Form1
                     Case 0
                         Select Case j
                             Case 0
-                                color = color.Red
+                                color = Color.Red
                                 question = KahonkQuestions(currentQ).answers(0)
                             Case 1
-                                color = color.DarkBlue
+                                color = Color.DarkBlue
                                 question = KahonkQuestions(currentQ).answers(1)
                         End Select
                     Case 1
                         Select Case j
                             Case 2
-                                color = color.DarkGray
+                                color = Color.DarkGray
                                 question = KahonkQuestions(currentQ).answers(2)
                             Case 3
-                                color = color.DarkGreen
+                                color = Color.DarkGreen
                                 question = KahonkQuestions(currentQ).answers(3)
                         End Select
 
@@ -96,7 +96,7 @@ Public Class Form1
                     .Width = btnWidth,
                     .Height = btnHeight,
                     .BackColor = color,
-                    .ForeColor = color.White,
+                    .ForeColor = Color.White,
                     .Text = question,
                     .Font = New Font("Kristen ITC", 16),
                     .FlatStyle = FlatStyle.Flat
