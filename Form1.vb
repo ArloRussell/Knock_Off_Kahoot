@@ -1,5 +1,6 @@
 ﻿Imports System.ComponentModel.Design
 Imports System.Web.Helpers
+Imports System.Web.WebPages
 Imports Newtonsoft.Json
 
 Public Class Form1
@@ -40,16 +41,16 @@ Public Class Form1
                     Case 0
                         Select Case j
                             Case 0
-                                color = color.Red
+                                color = Color.Red
                             Case 1
-                                color = color.DarkBlue
+                                color = Color.DarkBlue
                         End Select
                     Case 1
                         Select Case j
                             Case 0
-                                color = color.DarkGray
+                                color = Color.DarkGray
                             Case 1
-                                color = color.DarkGreen
+                                color = Color.DarkGreen
                         End Select
 
                 End Select
@@ -59,7 +60,7 @@ Public Class Form1
                     .Width = btnWidth,
                     .Height = btnHeight,
                     .BackColor = color,
-                    .ForeColor = color.White,
+                    .ForeColor = Color.White,
                     .Text = KahonkQuestions(currentQ).answers(j),
                     .Font = New Font("Kristen ITC", 16),
                     .FlatStyle = FlatStyle.Flat,
@@ -72,19 +73,19 @@ Public Class Form1
                     Case 0
                         Select Case j
                             Case 0
-                                color = color.Red
+                                color = Color.Red
                                 question = KahonkQuestions(currentQ).answers(0)
                             Case 1
-                                color = color.DarkBlue
+                                color = Color.DarkBlue
                                 question = KahonkQuestions(currentQ).answers(1)
                         End Select
                     Case 1
                         Select Case j
                             Case 2
-                                color = color.DarkGray
+                                color = Color.DarkGray
                                 question = KahonkQuestions(currentQ).answers(2)
                             Case 3
-                                color = color.DarkGreen
+                                color = Color.DarkGreen
                                 question = KahonkQuestions(currentQ).answers(3)
                         End Select
 
@@ -96,7 +97,7 @@ Public Class Form1
                     .Width = btnWidth,
                     .Height = btnHeight,
                     .BackColor = color,
-                    .ForeColor = color.White,
+                    .ForeColor = Color.White,
                     .Text = question,
                     .Font = New Font("Kristen ITC", 16),
                     .FlatStyle = FlatStyle.Flat,
@@ -107,8 +108,7 @@ Public Class Form1
             End If
 
         Next
-        loope += 1
-        Next
+
         LblQuest.Text = KahonkQuestions(0).question
     End Sub
 
@@ -130,7 +130,7 @@ Public Class Form1
         'WORKS LIKE A COAL MINER
         If sender.Name = "btn0" Then
             userChoice = 0
-        ElseIf sender.name = "btn1" Then
+        ElseIf sender.Name = "btn1" Then
             userChoice = 1
         ElseIf sender.Name = "btn2" Then
             userChoice = 2
@@ -151,13 +151,7 @@ Public Class Form1
         MakeButtons()
         tmrLeft.Stop()
     End Sub
-    Private Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
-        lblTime.Text = "20"
-        MakeButtons()
-        timeBy = 20
-        tmrLeft.Interval = 1000
-        tmrLeft.Start()
-    End Sub
+
 
     Private Sub tmrLeft_Tick(sender As Object, e As EventArgs) Handles tmrLeft.Tick
         timeBy -= 1
