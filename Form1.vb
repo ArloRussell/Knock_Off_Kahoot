@@ -112,6 +112,7 @@ Public Class Form1
     End Sub
 
     Private Sub btn_Click(sender As Button, e As EventArgs)
+        'here
         Dim userChoice As Integer
         Static score As Integer
         tmrLeft.Stop()
