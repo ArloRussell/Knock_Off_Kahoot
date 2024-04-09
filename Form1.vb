@@ -21,86 +21,93 @@ Public Class Form1
     End Sub
 
     Private Sub MakeButtons()
+
         PnlAnswers.Controls.Clear()
         Dim btnWidth As Double = PnlAnswers.Width / 2
         Dim btnHeight As Double
         Dim currentQ As Integer = 0
         Dim color As Color
         Dim question As String = "Placeholder"
-        For i As Integer = 0 To 1
-            For j As Integer = 0 To KahonkQuestions(currentQ).answers.Count - 1
-                If KahonkQuestions(i).answers.Count < 3 Then
-                    Select Case i
-                        Case = 0
-                            Select Case j
-                                Case = 0
-                                    color = Color.Red
-                                Case = 1
-                                    color = Color.DarkBlue
-                            End Select
-                        Case = 1
-                            Select Case j
-                                Case = 0
-                                    color = Color.DarkGray
-                                Case = 1
-                                    color = Color.DarkGreen
-                            End Select
+        'For i As Integer = 0 To 1
+        For j As Integer = 0 To KahonkQuestions(currentQ).answers.Count - 1
+            Dim i As Integer = j Mod 2
+            Dim ycoord As Integer = 0
+            If j >= 2 Then
+                ycoord = 1
+            End If
+            If KahonkQuestions(currentQ).answers.Count < 3 Then
 
-                    End Select
-                    btnHeight = PnlAnswers.Height / (KahonkQuestions(currentQ).answers.Count - 1)
-                    Dim btn As New Button With {
-                    .Location = New Point(btnWidth * i, btnHeight * j),
-                    .Width = btnWidth,
-                    .Height = btnHeight,
-                    .BackColor = color,
-                    .ForeColor = Color.White,
-                    .Text = KahonkQuestions(currentQ).answers(i),
-                    .Font = New Font("Kristen ITC", 16),
-                    .FlatStyle = FlatStyle.Flat
-                }
-                    AddHandler btn.Click, AddressOf Me.btn_Click
-                    PnlAnswers.Controls.Add(btn)
-                Else
-                    Select Case i
-                        Case = 0
-                            Select Case j
-                                Case = 0
-                                    color = Color.Red
-                                    question = KahonkQuestions(i).answers(0)
-                                Case = 1
-                                    color = Color.DarkBlue
-                                    question = KahonkQuestions(i).answers(1)
-                            End Select
-                        Case = 1
-                            Select Case j
-                                Case = 0
-                                    color = Color.DarkGray
-                                    question = KahonkQuestions(i - 1).answers(2)
-                                Case = 1
-                                    color = Color.DarkGreen
-                                    question = KahonkQuestions(i - 1).answers(3)
-                            End Select
+                Select Case i
+                    Case 0
+                        Select Case j
+                            Case 0
+                                color = Color.Red
+                            Case 1
+                                color = Color.DarkBlue
+                        End Select
+                    Case 1
+                        Select Case j
+                            Case 0
+                                color = Color.DarkGray
+                            Case 1
+                                color = Color.DarkGreen
+                        End Select
 
-                    End Select
+                End Select
+                btnHeight = PnlAnswers.Height / (KahonkQuestions(currentQ).answers.Count - 1)
+                Dim btn As New Button With {
+                .Location = New Point(btnWidth * i, btnHeight * ycoord),
+                .Width = btnWidth,
+                .Height = btnHeight,
+                .BackColor = color,
+                .ForeColor = Color.White,
+                .Text = KahonkQuestions(currentQ).answers(j),
+                .Font = New Font("Kristen ITC", 16),
+                .FlatStyle = FlatStyle.Flat
+            }
+                AddHandler btn.Click, AddressOf Me.btn_Click
+                PnlAnswers.Controls.Add(btn)
+            Else
+                Select Case i
+                    Case 0
+                        Select Case j
+                            Case 0
+                                color = Color.Red
+                                question = KahonkQuestions(currentQ).answers(0)
+                            Case 1
+                                color = Color.DarkBlue
+                                question = KahonkQuestions(currentQ).answers(1)
+                        End Select
+                    Case 1
+                        Select Case j
+                            Case 2
+                                color = Color.DarkGray
+                                question = KahonkQuestions(currentQ).answers(2)
+                            Case 3
+                                color = Color.DarkGreen
+                                question = KahonkQuestions(currentQ).answers(3)
+                        End Select
 
-                    btnHeight = PnlAnswers.Height / (KahonkQuestions(i).answers.Count / 2)
-                    Dim btn As New Button With {
-                    .Location = New Point(btnWidth * i, btnHeight * j),
-                    .Width = btnWidth,
-                    .Height = btnHeight,
-                    .BackColor = color,
-                    .ForeColor = Color.White,
-                    .Text = question,
-                    .Font = New Font("Kristen ITC", 16),
-                    .FlatStyle = FlatStyle.Flat
-                }
-                    AddHandler btn.Click, AddressOf Me.btn_Click
-                    PnlAnswers.Controls.Add(btn)
-                End If
-            Next
-            timeBy = KahonkQuestions(i).time
-            tmrLeft.Start()
+                End Select
+
+                btnHeight = PnlAnswers.Height / (KahonkQuestions(currentQ).answers.Count / 2)
+                Dim btn As New Button With {
+                .Location = New Point(btnWidth * i, btnHeight * ycoord),
+                .Width = btnWidth,
+                .Height = btnHeight,
+                .BackColor = color,
+                .ForeColor = Color.White,
+                .Text = KahonkQuestions(currentQ).answers(j),
+                .Font = New Font("Kristen ITC", 16),
+                .FlatStyle = FlatStyle.Flat
+            }
+                AddHandler btn.Click, AddressOf Me.btn_Click
+                PnlAnswers.Controls.Add(btn)
+            End If
         Next
+        timeBy = KahonkQuestions(currentQ).time
+        tmrLeft.Start()
+        'Next
         LblQuest.Text = KahonkQuestions(0).question
     End Sub
 
@@ -134,7 +141,7 @@ Public Class Form1
         Else
             MsgBox("bad choice buckaroo!")
         End If
-        MsgBox(userChoice & "  " & correctQuestion)
+        'MsgBox(userChoice & "  " & correctQuestion)
         KahonkQuestions.RemoveAt(0)
         MakeButtons()
 
