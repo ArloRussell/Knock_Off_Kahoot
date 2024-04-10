@@ -5,6 +5,7 @@ Imports Newtonsoft.Json
 Public Class Form1
     Private KahonkQuestions As New List(Of Question)
     Private timeBy As Integer = 20
+    Private timeWrong As Integer = 3
     Private Const strQUESTIONFILE As String = "vbchapter5kahoot.json"
     Private correctQuestion As Integer
 
@@ -35,25 +36,17 @@ Public Class Form1
             If j >= 2 Then
                 ycoord = 1
             End If
+            Select Case j
+                Case 0
+                    color = Color.Red
+                Case 1
+                    color = Color.DarkGray
+                Case 2
+                    color = Color.DarkBlue
+                Case 3
+                    color = Color.DarkGreen
+            End Select
             If KahonkQuestions(currentQ).answers.Count < 3 Then
-
-                Select Case i
-                    Case 0
-                        Select Case j
-                            Case 0
-                                color = Color.Red
-                            Case 1
-                                color = Color.DarkBlue
-                        End Select
-                    Case 1
-                        Select Case j
-                            Case 0
-                                color = Color.DarkGray
-                            Case 1
-                                color = Color.DarkGreen
-                        End Select
-
-                End Select
                 btnHeight = PnlAnswers.Height / (KahonkQuestions(currentQ).answers.Count - 1)
                 Dim btn As New Button With {
                 .Location = New Point(btnWidth * i, btnHeight * ycoord),
@@ -68,27 +61,6 @@ Public Class Form1
                 AddHandler btn.Click, AddressOf Me.btn_Click
                 PnlAnswers.Controls.Add(btn)
             Else
-                Select Case i
-                    Case 0
-                        Select Case j
-                            Case 0
-                                color = Color.Red
-                                question = KahonkQuestions(currentQ).answers(0)
-                            Case 1
-                                color = Color.DarkBlue
-                                question = KahonkQuestions(currentQ).answers(1)
-                        End Select
-                    Case 1
-                        Select Case j
-                            Case 2
-                                color = Color.DarkGray
-                                question = KahonkQuestions(currentQ).answers(2)
-                            Case 3
-                                color = Color.DarkGreen
-                                question = KahonkQuestions(currentQ).answers(3)
-                        End Select
-
-                End Select
 
                 btnHeight = PnlAnswers.Height / (KahonkQuestions(currentQ).answers.Count / 2)
                 Dim btn As New Button With {
@@ -112,10 +84,11 @@ Public Class Form1
     End Sub
 
     Private Sub btn_Click(sender As Button, e As EventArgs)
-        Dim userChoice As Integer
         Static score As Integer
+        Dim correctAnswer As String = KahonkQuestions(0).answers(KahonkQuestions(0).correct)
         tmrLeft.Stop()
         'WORKS LIKE A CHARM
+
         If sender.Text = "true" OrElse sender.Text = "false" Then
             If KahonkQuestions(0).correct = 0 Then
                 correctQuestion = 0
@@ -127,30 +100,43 @@ Public Class Form1
         End If
 
         'WORKS LIKE A COAL MINER
-        If sender.Text = "true" Then
-            userChoice = 0
-        ElseIf sender.Text = "false" Then
-            userChoice = 1
-        End If
-
-        'Problem is here >>
-        If userChoice = correctQuestion Then
-
+        If sender.Text = correctAnswer Then
             score += 1
-            lblScore.Text = score
+            lblScore.Text = score.ToString
         Else
-            MsgBox("bad choice buckaroo!")
+            MsgBox("Incorrect") '<-- This. I want this gone.
+
+            'This is supposed to show up when the answer is wrong. It won't and I don't know why.
+            Dim wrong As New Label With {
+                .Location = New Point(270, 54),
+                .Width = 237,
+                .Height = 77,
+                .BackColor = Color.Black,
+                .ForeColor = Color.White,
+                .Font = New Font("Kristen ITC", 20.25, FontStyle.Bold),
+                .TextAlign = ContentAlignment.MiddleCenter}
+            PnlAnswers.Controls.Add(wrong)
         End If
         'MsgBox(userChoice & "  " & correctQuestion)
         KahonkQuestions.RemoveAt(0)
-        MakeButtons()
+        If KahonkQuestions.Count = 0 Then
+            GameOver.Show()
+            Me.Close()
+        Else
+            MakeButtons()
+        End If
 
     End Sub
 
     Private Sub tmrLeft_Tick(sender As Object, e As EventArgs) Handles tmrLeft.Tick
         timeBy -= 1
         lblTime.Text = timeBy.ToString()
+        If timeBy <= 5 Then
+            Me.BackColor = Color.Red
+        End If
         If timeBy = 0 Then
+            MsgBox("Time's Up!")
+            GameOver.Show()
             Me.Close()
         End If
     End Sub
